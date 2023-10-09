@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+import campoMinado
 
 # Função para criar um tabuleiro de jogo vazio
 def criar_tabuleiro(linhas, colunas):
