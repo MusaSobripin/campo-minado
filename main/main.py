@@ -51,7 +51,7 @@ def game_over():
     for x in range(linhas):
         for y in range(colunas):
             if tabuleiro[x][y] == -1:
-                buttons[x][y]['text'] = 'X'
+                buttons[x][y]['text'] = ''
             buttons[x][y]['state'] = 'disabled'
     status_label.config(text='Game Over!')
 
