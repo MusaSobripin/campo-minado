@@ -132,7 +132,7 @@ class CampoMinado:
 
         return bomb_count
     
-    def revelar_celula(self, row, col):
+    """def revelar_celula(self, row, col):
         if self.tabuleiro[row][col] != 0:
             self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
         else:
@@ -141,9 +141,9 @@ class CampoMinado:
                 for dc in [-1, 0, 1]:
                     if 0 <= row + dr < self.linhas and 0 <= col + dc < self.colunas and self.tabuleiro[row + dr][col + dc] != -1 and self.tabuleiro[row + dr][col + dc] != -2:
                         self.revelar_celula(row + dr, col + dc)
-        self.tabuleiro[row][col] = -2
+        self.tabuleiro[row][col] = -2"""
 
-    """def revelar_celula(self, x, y):
+    def revelar_celula(self, x, y):
         if self.tabuleiro[x][y] == -1:
             self.finalizar_partida()
         else:
@@ -155,7 +155,7 @@ class CampoMinado:
                 for i in range(-1, 2):
                     for j in range(-1, 2):
                         if 0 <= x + i < self.linhas and 0 <= y + j < self.colunas and self.botoes[x + i][y + j]['state'] == 'normal':
-                            self.revelar_celula(x + i, y + j)"""
+                            self.revelar_celula(x + i, y + j)
 
     def marcar_bandeira(self, row, col):
         if self.jogo_encerrado:
