@@ -119,18 +119,21 @@ class CampoMinado:
             for j in range(self.colunas):
                 if self.tabuleiro[i][j] == -1:
                     self.botoes[i][j].config(text="💣", state="disabled")
-    
-    def calcular_vizinhos(tabuleiro, x, y):
-        linhas, colunas = len(tabuleiro), len(tabuleiro[0])
-        bomb_count = 0
 
+
+    
+    def calcular_vizinhos(self, x, y):
+        linhas, colunas = self.linhas, self.colunas
+        bomb_count = 0 
+        
         for i in range(-1, 2):
             for j in range(-1, 2):
                 if 0 <= x + i < linhas and 0 <= y + j < colunas:
-                    if tabuleiro[x + i][y + j] == -1:
+                    if self.tabuleiro[x + i][y + j] == -1:
                         bomb_count += 1
 
         return bomb_count
+
     
     """def revelar_celula(self, row, col):
         if self.tabuleiro[row][col] != 0:
