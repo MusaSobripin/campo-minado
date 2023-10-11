@@ -20,9 +20,7 @@ def test_plantar_bombas(campo_minado):
 def test_calcular_vizinhos(campo_minado):
     # Set up a scenario with specific bomb placements and test the calculation
     campo_minado.iniciar_jogo(3, 3, 2)  # No bombs
-    campo_minado.tabuleiro = [[-1, 0, 0], 
-                              [0, 0, 0], 
-                              [0, 0, -1]]
+    campo_minado.tabuleiro = [[-1, 0, 0], [0, 0, 0], [0, 0, -1]]
 
     # Test the cell in the middle
     assert campo_minado.calcular_vizinhos(1, 1) == 2
@@ -110,7 +108,7 @@ test_cases = [
 
 @pytest.mark.parametrize("tabuleiro, coordenadas, resultado_esperado", test_cases)
 def test_celula_com_vizinhos_bomba_em_algumas_direcoes_facil(campo_minado, tabuleiro, coordenadas, resultado_esperado):
-    campo_minado.iniciar_jogo(len(tabuleiro), len(tabuleiro[0]), 8)
+    campo_minado.iniciar_jogo(len(tabuleiro), len(tabuleiro[0]), 10)
     campo_minado.tabuleiro = tabuleiro
     x, y = coordenadas
     resultado = campo_minado.calcular_vizinhos(x, y)
