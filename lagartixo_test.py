@@ -395,7 +395,25 @@ def test_celula_fora_dos_limites_do_tabuleiro_facil():
         [0, 0, 0, 0, 0, 0, 0, 0]
     ]
     x, y = 10, 5  # Coordenadas fora dos limites do tabuleiro
-    resultado = calcular_vizinhos(tabuleiro_facil, x, y)
+    resultado = campo_minado.calcular_vizinhos(x, y)
+    assert resultado == 0, "A célula com coordenadas fora dos limites do tabuleiro no nível fácil não deve ter vizinhos bomba."
+
+def test_celula_fora_dos_limites_do_tabuleiro_intermediario(campo_minado):
+    campo_minado.iniciar_jogo(8, 8, 0)
+    campo_minado.tabuleiro = [
+        [0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
+        [0, -1, 0, -1, -1, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, -1, 0, 0, 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0],
+        [0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0],
+        [0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, -1, -1, 0, 0, 0, -1, 0]
+    ]
+    x, y = 12, 5  # Coordenadas fora dos limites do tabuleiro
+    resultado = campo_minado.calcular_vizinhos(x, y)
     assert resultado == 0, "A célula com coordenadas fora dos limites do tabuleiro no nível fácil não deve ter vizinhos bomba."
 
 if __name__ == '__main__':
