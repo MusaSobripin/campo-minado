@@ -267,10 +267,30 @@ def test_celula_na_borda_do_tabuleiro_facil(campo_minado):
     resultado = campo_minado.calcular_vizinhos(x, y)
     assert resultado == 3, "A célula na borda do tabuleiro no nível fácil deve ter 3 vizinhos bomba."
 
-def test_celula_no_canto_do_tabuleiro_facil():
-    tabuleiro_facil = [
-        [-1, -1, -1, 0, 0, 0, 0, 0],
-        [-1, 0, 0, 0, 0, 0, 0, 0],
+def test_celula_na_borda_do_tabuleiro_facil(campo_minado):
+    campo_minado.iniciar_jogo(10, 16, 3)
+    campo_minado.tabuleiro = [
+    [0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, -1, -1, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0],
+    [0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0],
+    [0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+    x, y = 0, 3  # Coordenadas na borda do tabuleiro
+    resultado = campo_minado.calcular_vizinhos(x, y)
+    assert resultado == 3, "A célula na borda do tabuleiro no nível fácil deve ter 3 vizinhos bomba."
+
+
+def test_celula_no_canto_do_tabuleiro_facil(campo_minado):
+    campo_minado.iniciar_jogo(8, 8, 2)
+    campo_minado.tabuleiro = [
+        [0, -1, -1, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, -1, 0],
         [-1, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
