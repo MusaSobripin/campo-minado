@@ -125,7 +125,6 @@ class CampoMinado:
 
     
     def calcular_vizinhos(self, x, y):
-        linhas, colunas = self.linhas, self.colunas
         bomb_count = 0 
         
         for i in range(-1, 2):
