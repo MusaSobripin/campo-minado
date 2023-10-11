@@ -267,7 +267,7 @@ def test_celula_na_borda_do_tabuleiro_facil(campo_minado):
     resultado = campo_minado.calcular_vizinhos(x, y)
     assert resultado == 3, "A célula na borda do tabuleiro no nível fácil deve ter 3 vizinhos bomba."
 
-def test_celula_na_borda_do_tabuleiro_facil(campo_minado):
+def test_celula_na_borda_do_tabuleiro_intermediario(campo_minado):
     campo_minado.iniciar_jogo(10, 16, 3)
     campo_minado.tabuleiro = [
     [0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
