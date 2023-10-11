@@ -48,6 +48,7 @@ class CampoMinado:
         self.nivel = (linhas, colunas, bombas)
         self.linhas = linhas
         self.colunas = colunas
+        self.bombas_posicoes = set()
         self.bombas = bombas
         self.jogo_encerrado = False
         self.tempo_inicial = None
