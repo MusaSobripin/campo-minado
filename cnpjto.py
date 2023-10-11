@@ -32,6 +32,7 @@ class CampoMinado:
         
         self.tabuleiro_frame = None
         
+        self.criar_tabuleiro()
         self.criar_menu_niveis()
     
     def criar_menu_niveis(self):
