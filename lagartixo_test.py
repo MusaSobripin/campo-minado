@@ -250,3 +250,52 @@ def test_celula_com_vizinhos_bomba_em_algumas_direcoes_dificil(campo_minado):
     x, y = 1, 1  # Coordenadas no centro do tabuleiro
     resultado = campo_minado.calcular_vizinhos(x, y)
     assert resultado == 5, "A célula no nível difícil deve ter 5 vizinhos bomba em algumas direções."
+
+def test_celula_na_borda_do_tabuleiro_facil(campo_minado):
+    campo_minado.iniciar_jogo(8, 8, 3)
+    campo_minado.tabuleiro = [
+        [-1, -1, -1, 0, 0, 0, 0, 0],
+        [-1, 0, -1, 0, -1, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, -1, 0, -1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, -1, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0]
+    ]
+    x, y = 0, 3  # Coordenadas na borda do tabuleiro
+    resultado = campo_minado.calcular_vizinhos(x, y)
+    assert resultado == 3, "A célula na borda do tabuleiro no nível fácil deve ter 3 vizinhos bomba."
+
+def test_celula_no_canto_do_tabuleiro_facil():
+    tabuleiro_facil = [
+        [-1, -1, -1, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+    x, y = 0, 0  # Coordenadas no canto do tabuleiro
+    resultado = calcular_vizinhos(tabuleiro_facil, x, y)
+    assert resultado == 2, "A célula no canto do tabuleiro no nível fácil deve ter 2 vizinhos bomba."
+
+def test_celula_fora_dos_limites_do_tabuleiro_facil():
+    tabuleiro_facil = [
+        [-1, -1, -1, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+    x, y = 10, 5  # Coordenadas fora dos limites do tabuleiro
+    resultado = calcular_vizinhos(tabuleiro_facil, x, y)
+    assert resultado == 0, "A célula com coordenadas fora dos limites do tabuleiro no nível fácil não deve ter vizinhos bomba."
+
+if __name__ == '__main__':
+    pytest.main()
