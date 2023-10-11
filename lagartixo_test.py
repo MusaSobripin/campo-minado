@@ -294,10 +294,27 @@ def test_celula_no_canto_do_tabuleiro_facil(campo_minado):
         [-1, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0]
+        [0, 0, 0, -1, 0, 0, 0, 0],
+        [-1, 0, 0, 0, 0, 0, 0, -1]
     ]
+    x, y = 0, 0  # Coordenadas no canto do tabuleiro
+    resultado = campo_minado.calcular_vizinhos(x, y)
+    assert resultado == 2, "A célula no canto do tabuleiro no nível fácil deve ter 2 vizinhos bomba."
+
+def test_celula_no_canto_do_tabuleiro_intermediario(campo_minado):
+    campo_minado.iniciar_jogo(8, 8, 2)
+    campo_minado.tabuleiro = [
+     [0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, -1, -1, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, -1, 0, 0, 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0],
+    [0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0],
+    [0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, -1, -1, 0, 0, 0, -1, 0]
+]
     x, y = 0, 0  # Coordenadas no canto do tabuleiro
     resultado = calcular_vizinhos(tabuleiro_facil, x, y)
     assert resultado == 2, "A célula no canto do tabuleiro no nível fácil deve ter 2 vizinhos bomba."
