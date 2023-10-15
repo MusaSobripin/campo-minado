@@ -2,7 +2,7 @@ import pytest
 import time
 import timeit
 from tkinter import Tk
-from cnpjto import CampoMinado 
+from cminado import CampoMinado 
 
 @pytest.fixture
 def campo_minado():
