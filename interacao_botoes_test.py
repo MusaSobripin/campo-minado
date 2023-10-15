@@ -1,7 +1,7 @@
 import pytest
 from tkinter import Tk
 # from pytest_tkinter import TkFixture
-from cnpjto import CampoMinado  # Substitua 'seu_modulo' pelo nome real do seu módulo
+from cminado import CampoMinado  # Substitua 'seu_modulo' pelo nome real do seu módulo
 
 @pytest.fixture
 def campo_minado():
