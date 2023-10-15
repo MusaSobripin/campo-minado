@@ -178,7 +178,7 @@ class CampoMinado:
         return vizinhos
 
     def finalizar_partida(self):
-        self.tempo_passado = int(time.time() - self.tempo_inicial)
+         self.tempo_passado = int(time.time() - self.tempo_inicial)
 
     def verificar_vitoria(self):
         celulas_livres = sum(row.count(0) for row in self.tabuleiro)
