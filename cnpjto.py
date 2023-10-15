@@ -32,6 +32,15 @@ class CampoMinado:
         self.criar_tabuleiro()
         self.criar_menu_niveis()
 
+    # def criar_menu_niveis(self):
+    #     menu_frame = tk.Frame(self.root)
+    #     menu_frame.pack(pady=10)
+
+    #     tk.Label(menu_frame, text="Escolha um nível:").pack()
+
+    #     for nivel, (linhas, colunas, bombas) in self.niveis.items():
+    #         tk.Button(menu_frame, text=nivel, command=lambda l=linhas, c=colunas, b=bombas: self.iniciar_jogo(l, c, b)).pack()
+
     def criar_menu_niveis(self):
         menu_frame = tk.Frame(self.root)
         menu_frame.pack(pady=10)
