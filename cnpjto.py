@@ -45,7 +45,16 @@ class CampoMinado:
         menu_frame = tk.Frame(self.root)
         menu_frame.pack(pady=10)
 
-        tk.Label(menu_frame, text="Escolha um nível:").pack()
+        label = tk.Label(menu_frame, text="Escolha um nível:")
+        label.pack()
+
+        self.niveis = [("Fácil", 8, 8, 10), ("Intermediário", 10, 16, 30), ("Difícil", 24, 24, 100)]
+        buttons = []
+
+        for nivel, linhas, colunas, bombas in self.niveis:
+            button = tk.Button(menu_frame, text=nivel, command=lambda l=linhas, c=colunas, b=bombas: self.iniciar_jogo(l, c, b))
+            button.pack()
+            buttons.append(button)
 
         for nivel, (linhas, colunas, bombas) in self.niveis.items():
             tk.Button(menu_frame, text=nivel, command=lambda l=linhas, c=colunas, b=bombas: self.iniciar_jogo(l, c, b)).pack()
