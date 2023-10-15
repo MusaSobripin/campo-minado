@@ -56,9 +56,8 @@ class CampoMinado:
             button.pack()
             buttons.append(button)
 
-        for nivel, (linhas, colunas, bombas) in self.niveis.items():
-            tk.Button(menu_frame, text=nivel, command=lambda l=linhas, c=colunas, b=bombas: self.iniciar_jogo(l, c, b)).pack()
-
+        return label, buttons
+    
     def iniciar_jogo(self, linhas, colunas, bombas):
         self.nivel = (linhas, colunas, bombas)
         self.linhas = linhas
