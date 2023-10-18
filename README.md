@@ -18,32 +18,34 @@ Os casos de requisitos não especificados devem ser coletados com o professor da
 
 ## Requisitos gerados para a criação do jogo
 
-*Requisitos de Jogo:*
+*Meus Requisitos para o Jogo:*
 
-1. O jogo deve ser um jogo de Campo Minado.
-2. O jogador deve ser capaz de selecionar um nível de dificuldade (fácil, intermediário ou difícil) no início do jogo.
-3. O jogo deve gerar um tabuleiro com base no nível de dificuldade selecionado.
-4. O tabuleiro deve ser composto por células retangulares que o jogador pode revelar.
-5. O tabuleiro deve ser preenchido com um número específico de bombas com base no nível de dificuldade.
-6. O jogador deve ser capaz de clicar nas células para revelar o conteúdo delas.
-7. Se o jogador clicar em uma célula com uma bomba, o jogo deve terminar com uma derrota.
-8. As células reveladas devem mostrar o número de bombas adjacentes a elas.
-9. Se uma célula não tiver bombas adjacentes, todas as células adjacentes a ela sem bombas adjacentes devem ser reveladas automaticamente.
-10. O jogo deve manter uma contagem de bombas marcadas pelo jogador.
-11. O jogador deve ser capaz de marcar ou desmarcar uma célula com uma bandeira para indicar a presença de uma bomba.
-12. O jogador só deve ser capaz de marcar uma célula como uma bandeira se não tiver sido revelada.
-13. O jogador deve ser capaz de remover uma bandeira previamente colocada em uma célula.
-14. O jogador deve ser capaz de reiniciar o jogo a qualquer momento.
-15. O jogo deve calcular o tempo que o jogador leva para concluir o jogo.
-16. O jogador deve ser capaz de vencer o jogo ao revelar todas as células sem bombas sem explodir nenhuma.
-17. O jogo deve mostrar uma mensagem de vitória quando o jogador vencer.
-18. O jogo deve mostrar uma mensagem de derrota quando o jogador perde.
-19. O jogador deve ser capaz de iniciar um novo jogo após uma vitória ou derrota.
-20. O jogo deve manter um histórico de resultados para consulta posterior.
-21. O histórico de resultados deve incluir informações sobre a data e hora de cada jogo, o nível de dificuldade e o tempo de conclusão.
-22. O jogador deve ser capaz de acessar o histórico de resultados a partir do menu principal.
-23. O jogo deve permitir que o jogador saia do jogo e retorne ao menu principal a qualquer momento.
-24. O jogo deve incluir uma opção para sair do jogo a partir do menu principal.
+1. O jogo deve ser um jogo de Campo Minado ✅
+2. O jogador deve ser capaz de selecionar um nível de dificuldade fácil no início do jogo. ✅
+    -> Testar se é possível selecionar o nível de dificuldade fácil ✅
+3. O jogador deve ser capaz de selecionar um nível de dificuldade intermediário no início do jogo. ✅
+    -> Testar se é possível selecionar o nível de dificuldade intermediário ✅
+4. O jogador deve ser capaz de selecionar um nível de dificuldade difícil no início do jogo. ✅
+    -> Testar se é possível selecionar o nível de dificuldade fácil ✅
+5. O jogo deve gerar um tabuleiro com base no nível de dificuldade selecionado. ✅
+    ![tabuleiro_test](image.png)
+6. O tabuleiro deve ser composto por células retangulares que o jogador pode revelar. ✅
+7. O tabuleiro deve ser preenchido com um número específico de bombas com base no nível de dificuldade. ✅
+8. O jogador deve ser capaz de clicar nas células para revelar o conteúdo delas. ✅
+9. Se o jogador clicar em uma célula com uma bomba, o jogo deve terminar com uma derrota.✅
+10. As células reveladas devem mostrar o número de bombas adjacentes a elas.✅
+11. Se uma célula não tiver bombas adjacentes, todas as células adjacentes a ela sem bombas adjacentes devem ser reveladas automaticamente.✅
+12. O jogador deve ser capaz de marcar ou desmarcar uma célula com uma bandeira para indicar a presença de uma bomba.✅
+13. O jogador só deve ser capaz de marcar uma célula como uma bandeira se não tiver sido revelada.✅
+14. O jogador deve ser capaz de remover uma bandeira previamente colocada em uma célula.✅
+15. O jogador deve ser capaz de reiniciar o jogo a qualquer momento. ✅
+16. O jogo deve calcular o tempo que o jogador leva para concluir o jogo. ✅
+17. O jogador deve ser capaz de vencer o jogo ao revelar todas as células sem bombas sem explodir nenhuma. ✅
+18. O jogo deve mostrar uma mensagem de vitória quando o jogador vencer. ✅
+19. O jogo deve mostrar uma mensagem de derrota quando o jogador perde.✅
+20. O jogador deve ser capaz de iniciar um novo jogo após uma vitória ou derrota. ✅
+21. O jogo deve permitir que o jogador saia do jogo e retorne ao menu principal a qualquer momento. ✅
+
 
 *Requisitos de Interface do Usuário:*
 
