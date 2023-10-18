@@ -28,7 +28,7 @@ Os casos de requisitos não especificados devem ser coletados com o professor da
 4. O jogador deve ser capaz de selecionar um nível de dificuldade difícil no início do jogo. ✅
     -> Testar se é possível selecionar o nível de dificuldade fácil ✅
 5. O jogo deve gerar um tabuleiro com base no nível de dificuldade selecionado. ✅
-    ![tabuleiro_test](image.png)
+   <img src="img/image.png"> 
 6. O tabuleiro deve ser composto por células retangulares que o jogador pode revelar. ✅
 7. O tabuleiro deve ser preenchido com um número específico de bombas com base no nível de dificuldade. ✅
 8. O jogador deve ser capaz de clicar nas células para revelar o conteúdo delas. ✅
