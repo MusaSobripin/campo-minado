@@ -114,18 +114,19 @@ class CampoMinado:
         if self.tabuleiro[row][col] == -1:
             self.mostrar_bombas()
             self.mostrar_mensagem("Você perdeu!")
-            self.jogo_encerrado = True
+            self.jogo_encerrado = True  # Define o jogo como encerrado
             self.finalizar_partida()
         else:
             self.revelar_celula(row, col)
             self.verificar_vitoria()
 
     def mostrar_mensagem(self, mensagem):
-        resposta = tkinter.messagebox.askquestion("Resultado", mensagem + f"\nTempo: {self.tempo_passado} segundos\nDeseja jogar novamente?")
+        resposta = tkinter.messagebox.askquestion("Resultado", mensagem + f"\nDeseja jogar novamente?")
         if resposta == "yes":
             self.iniciar_jogo(*self.nivel)
         else:
             self.root.quit()
+            raise SystemExit  # Lançar uma exceção SystemExit quando o jogo deve ser encerrado
 
     def mostrar_bombas(self):
         for i in range(self.linhas):
@@ -144,17 +145,97 @@ class CampoMinado:
 
         return bomb_count
 
+    # def revelar_celula(self, row, col):
+    #     if self.tabuleiro[row][col] != 0:
+    #         self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
+    #     else:
+    #         self.botoes[row][col].config(state="disabled")
+    #         for dr in [-1, 0, 1]:
+    #             for dc in [-1, 0, 1]:
+    #                 if 0 <= row + dr < self.linhas and 0 <= col + dc < self.colunas and self.tabuleiro[row + dr][col + dc] != -1 and self.tabuleiro[row + dr][col + dc] != -2:
+    #                     self.revelar_celula(row + dr, col + dc)
+    #     self.tabuleiro[row][col] = -2
+    
+    # def revelar_celula(self, row, col):
+    #     if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
+    #         return
+
+    #     if self.tempo_inicial is None:
+    #         self.tempo_inicial = time.time()
+
+    #     if self.tabuleiro[row][col] == -1:
+    #         self.mostrar_bombas()
+    #         self.mostrar_mensagem("Você perdeu!")
+    #         self.jogo_encerrado = True
+    #         self.finalizar_partida()
+    #     else:
+    #         self.revelar_vizinhanca(row, col)
+    #         self.verificar_vitoria()
+
     def revelar_celula(self, row, col):
-        if self.tabuleiro[row][col] != 0:
-            self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
+        if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
+            return
+
+        if self.tempo_inicial is None:
+            self.tempo_inicial = time.time()
+
+        if self.tabuleiro[row][col] == -1:
+            self.mostrar_bombas()
+            self.mostrar_mensagem("Você perdeu!")
+            self.jogo_encerrado = True
+            self.finalizar_partida()
         else:
-            self.botoes[row][col].config(state="disabled")
+            bomb_count = self.calcular_vizinhos(row, col)
+            if bomb_count > 0:
+                self.botoes[row][col].config(text=str(bomb_count), state="disabled")
+            else:
+                self.revelar_vizinhanca(row, col)
+            self.tabuleiro[row][col] = -2
+            self.verificar_vitoria()
+    
+    # def revelar_vizinhanca(self, row, col):
+    #     if row < 0 or row >= self.linhas or col < 0 or col >= self.colunas or self.tabuleiro[row][col] == -2:
+    #         return
+
+    #     if self.tabuleiro[row][col] == 0:
+    #         self.tabuleiro[row][col] = -2
+    #         self.botoes[row][col].config(text="", state="disabled")
+            
+    #         for dr in [-1, 0, 1]:
+    #             for dc in [-1, 0, 1]:
+    #                 if dr == 0 and dc == 0:
+    #                     continue
+    #                 new_row, new_col = row + dr, col + dc
+    #                 if 0 <= new_row < self.linhas and 0 <= new_col < self.colunas:
+    #                     self.revelar_vizinhanca(new_row, new_col)
+    #     else:
+    #         self.tabuleiro[row][col] = -2
+    #         self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
+    
+    def revelar_vizinhanca(self, row, col):
+        if row < 0 or row >= self.linhas or col < 0 or col >= self.colunas or self.tabuleiro[row][col] == -2:
+            return
+
+        if self.tabuleiro[row][col] == 0:
+            self.tabuleiro[row][col] = -2
+            self.botoes[row][col].config(text="0", state="disabled")
+
             for dr in [-1, 0, 1]:
                 for dc in [-1, 0, 1]:
-                    if 0 <= row + dr < self.linhas and 0 <= col + dc < self.colunas and self.tabuleiro[row + dr][col + dc] != -1 and self.tabuleiro[row + dr][col + dc] != -2:
-                        self.revelar_celula(row + dr, col + dc)
-        self.tabuleiro[row][col] = -2
+                    if dr == 0 and dc == 0:
+                        continue
+                    new_row, new_col = row + dr, col + dc
+                    if 0 <= new_row < self.linhas and 0 <= new_col < self.colunas:
+                        if self.tabuleiro[new_row][new_col] == 0:
+                            self.revelar_vizinhanca(new_row, new_col)
+                        elif self.tabuleiro[new_row][new_col] > 0:
+                            self.botoes[new_row][new_col].config(text=str(self.tabuleiro[new_row][new_col]), state="disabled")
+        else:
+            self.tabuleiro[row][col] = -2
+            self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
 
+
+    
     def marcar_bandeira(self, row, col):
         if self.jogo_encerrado:
             return
@@ -185,7 +266,6 @@ class CampoMinado:
         celulas_abertas = sum(row.count(-2) for row in self.tabuleiro)
         if celulas_abertas == celulas_livres:
             self.mostrar_bombas()
-            self.mostrar_mensagem(f"Você ganhou em {self.tempo_passado} segundos!")
             self.jogo_encerrado = True
             self.finalizar_partida()
 
