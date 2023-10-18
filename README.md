@@ -23,6 +23,7 @@ Os casos de requisitos não especificados devem ser coletados com o professor da
 1. O jogo deve ser um jogo de Campo Minado ✅
 2. O jogador deve ser capaz de selecionar um nível de dificuldade fácil no início do jogo. ✅
     -> Testar se é possível selecionar o nível de dificuldade fácil ✅
+    
 3. O jogador deve ser capaz de selecionar um nível de dificuldade intermediário no início do jogo. ✅
     -> Testar se é possível selecionar o nível de dificuldade intermediário ✅
 4. O jogador deve ser capaz de selecionar um nível de dificuldade difícil no início do jogo. ✅
@@ -49,19 +50,18 @@ Os casos de requisitos não especificados devem ser coletados com o professor da
 
 *Requisitos de Interface do Usuário:*
 
-25. O jogo deve ter uma interface gráfica amigável.
-26. Deve haver um botão de menu principal na tela de jogo para retornar ao menu principal.
-27. Deve haver uma contagem de bombas marcadas na tela de jogo.
-28. Deve haver um cronômetro na tela de jogo para registrar o tempo de jogo.
-29. O tabuleiro do jogo deve ser visível e interativo.
-30. O jogo deve exibir células fechadas como um bloco sólido.
-31. As células reveladas devem mostrar o número de bombas adjacentes.
-32. O jogo deve usar bandeiras para indicar células com bombas marcadas pelo jogador.
-33. As células com bandeiras devem ser claramente identificáveis.
-34. O jogo deve ter mensagens de vitória e derrota visíveis na tela de jogo.
-35. O jogo deve ter uma tela de menu principal com opções para iniciar um novo jogo, acessar o histórico de resultados e sair do jogo.
-36. Deve haver opções de nível de dificuldade claramente visíveis no menu principal.
-37. O histórico de resultados deve ser apresentado de forma legível e organizada.
-38. O jogo deve ter um design agradável e fácil de usar.
-39. Deve haver um ícone ou logotipo representativo na interface.
-40. O jogo deve incluir informações de contato ou créditos para os desenvolvedores.
+22. O jogo deve ter uma interface gráfica amigável. ✅
+23. Deve haver um menu principal na tela de jogo para retornar ao menu principal. ✅
+24. Deve haver uma contagem de bombas marcadas na tela de jogo. 
+25. Deve haver um cronômetro na tela de jogo para registrar o tempo de jogo. 
+26. O tabuleiro do jogo deve ser visível e interativo. ✅
+27. O jogo deve exibir células fechadas como um bloco sólido. ✅
+28. As células reveladas devem mostrar o número de bombas adjacentes. ✅
+29. O jogo deve usar bandeiras para indicar células com bombas marcadas pelo jogador. ✅
+30. As células com bandeiras devem ser claramente identificáveis. ✅
+31. O jogo deve ter mensagens de vitória e derrota visíveis na tela de jogo. ✅
+32. O jogo deve ter uma tela de menu principal com opções para iniciar um novo jogo, acessar o histórico de resultados e sair do jogo. ✅ + -
+33. Deve haver opções de nível de dificuldade claramente visíveis no menu principal. ✅
+34. O histórico de resultados deve ser apresentado de forma legível e organizada. ✅
+35. O jogo deve ter um design agradável e fácil de usar. ✅ + -
+36. Deve haver um ícone ou logotipo representativo na interface. ✅
