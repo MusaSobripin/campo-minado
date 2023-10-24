@@ -23,7 +23,6 @@ Os casos de requisitos não especificados devem ser coletados com o professor da
 1. O jogo deve ser um jogo de Campo Minado ✅
 2. O jogador deve ser capaz de selecionar um nível de dificuldade fácil no início do jogo. ✅
     -> Testar se é possível selecionar o nível de dificuldade fácil ✅
-    
 3. O jogador deve ser capaz de selecionar um nível de dificuldade intermediário no início do jogo. ✅
     -> Testar se é possível selecionar o nível de dificuldade intermediário ✅
 4. O jogador deve ser capaz de selecionar um nível de dificuldade difícil no início do jogo. ✅
