@@ -90,7 +90,7 @@ def test_tabuleiro_apenas_bombas_facil(campo_minado):
     ]
     x, y = 3, 3
     resultado = campo_minado.calcular_vizinhos(x, y)
-    assert resultado == 9, "O tabuleiro contendo apenas bombas deve ter 0 vizinhos bomba."
+    assert resultado == 8, "O tabuleiro contendo apenas bombas deve ter 0 vizinhos bomba."
     
 def test_tabuleiro_apenas_bombas_intermediario(campo_minado):
     campo_minado.iniciar_jogo(10, 16, 160)
@@ -108,7 +108,7 @@ def test_tabuleiro_apenas_bombas_intermediario(campo_minado):
     ]
     x, y = 3, 3
     resultado = campo_minado.calcular_vizinhos(x, y)
-    assert resultado == 9, "O tabuleiro contendo apenas bombas deve ter 0 vizinhos bomba."
+    assert resultado == 8, "O tabuleiro contendo apenas bombas deve ter 0 vizinhos bomba."
 
 def test_tabuleiro_vizinho_de_bombas_facil(campo_minado):
     campo_minado.iniciar_jogo(8, 8, 39)
@@ -124,7 +124,7 @@ def test_tabuleiro_vizinho_de_bombas_facil(campo_minado):
     ]
     x, y = 3, 3
     resultado = campo_minado.calcular_vizinhos(x, y)
-    assert resultado == 8, "O tabuleiro onde todas as células são vizinhas de uma bomba deve ter 8 vizinhos bomba."
+    assert resultado == 7, "O tabuleiro onde todas as células são vizinhas de uma bomba deve ter 8 vizinhos bomba."
     
 def test_tabuleiro_vizinho_de_bombas_intermediario(campo_minado):
     campo_minado.iniciar_jogo(10, 16, 84)
@@ -142,7 +142,7 @@ def test_tabuleiro_vizinho_de_bombas_intermediario(campo_minado):
     ]
     x, y = 3, 3
     resultado = campo_minado.calcular_vizinhos(x, y)
-    assert resultado == 6, "O tabuleiro onde todas as células são vizinhas de uma bomba deve ter 8 vizinhos bomba."
+    assert resultado == 5, "O tabuleiro onde todas as células são vizinhas de uma bomba deve ter 8 vizinhos bomba."
 
 # def test_tabuleiro_vizinho_de_bombas_dificil(campo_minado):
 #     campo_minado.iniciar_jogo(10, 16, 384) #Total de bombas é 384

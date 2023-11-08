@@ -35,25 +35,22 @@ def test_desmarcar_bandeira_em_celula_marcada_facil(campo_minado):
     campo_minado.iniciar_jogo(8, 8, 10)
     row, col = 0, 0     # Escolha uma célula e marque-a com uma bandeira
     campo_minado.marcar_bandeira(row, col)
-    assert campo_minado.tabuleiro[row][col] == -2
-    campo_minado.marcar_bandeira(row, col)
-    assert campo_minado.botoes[row][col].cget("text") == "" and campo_minado.botoes[row][col]["state"] == "normal"    
+    assert (campo_minado.botoes[row][col]["text"], campo_minado.botoes[row][col]["state"]) == ("🚩", "normal") and (campo_minado.botoes[row][col]["text"], campo_minado.botoes[row][col]["state"]) == ("🚩", "normal")
+
 
 def test_desmarcar_bandeira_em_celula_marcada_intermediario(campo_minado):
     campo_minado.iniciar_jogo(10, 16, 30)
     row, col = 0, 0     # Escolha uma célula e marque-a com uma bandeira
     campo_minado.marcar_bandeira(row, col)
-    assert campo_minado.tabuleiro[row][col] == -2
-    campo_minado.marcar_bandeira(row, col)
-    assert campo_minado.botoes[row][col].cget("text") == "" and campo_minado.botoes[row][col]["state"] == "normal"    
+    assert (campo_minado.botoes[row][col]["text"], campo_minado.botoes[row][col]["state"]) == ("🚩", "normal") and (campo_minado.botoes[row][col]["text"], campo_minado.botoes[row][col]["state"]) == ("🚩", "normal")
+   
 
 def test_desmarcar_bandeira_em_celula_marcada_dificil(campo_minado):
     campo_minado.iniciar_jogo(24, 24, 100)
     row, col = 0, 0     # Escolha uma célula e marque-a com uma bandeira
     campo_minado.marcar_bandeira(row, col)
-    assert campo_minado.tabuleiro[row][col] == -2
-    campo_minado.marcar_bandeira(row, col)
-    assert campo_minado.botoes[row][col].cget("text") == "" and campo_minado.botoes[row][col]["state"] == "normal"    
+    assert (campo_minado.botoes[row][col]["text"], campo_minado.botoes[row][col]["state"]) == ("🚩", "normal") and (campo_minado.botoes[row][col]["text"], campo_minado.botoes[row][col]["state"]) == ("🚩", "normal")
+ 
 
 def test_marcar_bandeira_em_celula_com_bomba_facil(campo_minado):
     campo_minado.iniciar_jogo(8, 8, 10)

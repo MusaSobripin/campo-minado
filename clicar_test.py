@@ -82,7 +82,7 @@ def test_revelar_celula_vazia_facil(campo_minado):
         campo_minado.jogo_encerrado = False
     assert not campo_minado.jogo_encerrado 
 
-def test_revelar_celula_vazia_facil(campo_minado):
+def test_revelar_celula_vazia_intermediario(campo_minado):
     campo_minado.iniciar_jogo(10, 16, 30)
     row, col = 0, 0  # Suponha que esta célula esteja vazia
     if campo_minado.clicar(row, col):

@@ -145,7 +145,7 @@ class CampoMinado:
                         self.tabuleiro[i + dr][j + dc] += 1
 
     def clicar(self, row, col):
-        if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
+        if self.jogo_encerrado or self.tabuleiro[row][col] == -2 or self.botoes[row][col]["text"] == "🚩":
             return
 
         if self.tempo_inicial is None:
@@ -189,6 +189,12 @@ class CampoMinado:
                 if 0 <= x + i < self.linhas and 0 <= y + j < self.colunas:
                     if self.tabuleiro[x + i][y + j] == -1:
                         bomb_count += 1
+
+        # Se a célula em (x, y) tiver uma bomba, subtrair 1 para evitar contar a própria célula
+        try:
+            if self.tabuleiro[x][y] == -1:
+                bomb_count -= 1
+        except: IndexError
 
         return bomb_count
 
@@ -238,15 +244,12 @@ class CampoMinado:
     def marcar_bandeira(self, row, col):
         if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
             return
-
-        if self.tempo_inicial is None:
-            self.tempo_inicial = time.time()
-
-        if self.botoes[row][col]["text"] == "🚩":
-            self.botoes[row][col].config(text="?")
-            self.bandeiras_marcadas -= 1  # Decrementar o contador de bandeiras marcadas
-        elif self.botoes[row][col]["text"] == "?":
+        if self.botoes[row][col]["text"] == "":
+            self.botoes[row][col].config(text="🚩")
+            self.bandeiras_marcadas -= 1
+        elif self.botoes[row][col]["text"] == "🚩":
             self.botoes[row][col].config(text="")
+            self.bandeiras_marcadas += 1
         else:
             # Verificar se o limite de bandeiras foi atingido
             if self.bandeiras_marcadas < self.limite_bandeiras:
@@ -265,7 +268,6 @@ class CampoMinado:
     
     def finalizar_partida(self):
         self.tempo_passado = int(time.time() - self.tempo_inicial)
-        self.mostrar_mensagem()
 
     def mostrar_historico(self):
         if self.partidas_jogadas:
