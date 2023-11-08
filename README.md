@@ -48,6 +48,10 @@ pip3 install -r dependencias.txt
 ```sh
 py cminado.py
 ```
+ou
+```sh
+./dist/cminado.exe
+```
 
 ## Como executar os testes?
 
