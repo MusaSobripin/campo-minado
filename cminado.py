@@ -22,24 +22,23 @@ class CampoMinado:
         self.botoes = []
         self.jogo_encerrado = False
         self.bombas_posicoes = set()
+        self.bandeiras_marcadas = 0
+        self.limite_bandeiras = 0
+        self.placar_bombas = tk.Label(root, text="Bombas Restantes: 0")
+        self.placar_tempo = tk.Label(root, text="Tempo: 0s")
 
         self.tempo_inicial = None
         self.tempo_passado = 0
-        self.timer = None
+        self.timer_label = tk.Label(root)
+        self.timer_label.pack()
 
         self.tabuleiro_frame = None
 
-        self.criar_tabuleiro()
+        self.partidas_jogadas = []
+
         self.criar_menu_niveis()
-
-    # def criar_menu_niveis(self):
-    #     menu_frame = tk.Frame(self.root)
-    #     menu_frame.pack(pady=10)
-
-    #     tk.Label(menu_frame, text="Escolha um nível:").pack()
-
-    #     for nivel, (linhas, colunas, bombas) in self.niveis.items():
-    #         tk.Button(menu_frame, text=nivel, command=lambda l=linhas, c=colunas, b=bombas: self.iniciar_jogo(l, c, b)).pack()
+        self.criar_botao_tutorial()
+        self.atualizar_placar_bombas()
 
     def criar_menu_niveis(self):
         menu_frame = tk.Frame(self.root)
@@ -57,8 +56,10 @@ class CampoMinado:
             buttons.append(button)
 
         return label, buttons
-    
+
     def iniciar_jogo(self, linhas, colunas, bombas):
+        if self.jogo_encerrado:
+            self.reiniciar_jogo()
         self.nivel = (linhas, colunas, bombas)
         self.linhas = linhas
         self.colunas = colunas
@@ -67,13 +68,45 @@ class CampoMinado:
         self.jogo_encerrado = False
         self.tempo_inicial = None
         self.tempo_passado = 0
+        self.bandeiras_marcadas = 0  # Reiniciar o contador de bandeiras marcadas
 
         if self.tabuleiro_frame:
             self.tabuleiro_frame.destroy()
 
         self.criar_tabuleiro()
         self.plantar_bombas()
+        self.limite_bandeiras = self.bombas  # Define o limite de bandeiras com base na quantidade de bombas
+    
+    def atualizar_placar_bombas(self):
+        bombas_restantes = self.bombas - self.bandeiras_marcadas
+        self.placar_bombas.config(text=f"Bombas Restantes: {bombas_restantes}")
+        self.placar_bombas.pack()
 
+    def atualizar_placar_tempo(self):
+        if not self.jogo_encerrado:
+            self.tempo_passado = int(time.time() - self.tempo_inicial)
+            self.placar_tempo.config(text=f"⏰: {self.tempo_passado}s")
+            self.root.after(1000, self.atualizar_placar_tempo)
+        else:
+            self.placar_tempo.pack()
+    def criar_botao_tutorial(self):
+        tutorial_button = tk.Button(self.root, text="Tutorial", command=self.exibir_tutorial)
+        tutorial_button.pack()
+
+    def exibir_tutorial(self):
+        tutorial = """
+        Como jogar Campo Minado:
+        
+        1. Clique com o botão esquerdo do mouse para abrir uma célula.
+        2. Clique com o botão direito do mouse para marcar ou desmarcar uma bandeira.
+        3. Se clicar em uma célula com uma bomba, o jogo termina.
+        4. O objetivo é abrir todas as células que não contêm bombas.
+        5. Se todas as células sem bombas forem abertas, você vence o jogo.
+        
+        Boa sorte!
+        """
+        tkinter.messagebox.showinfo("Tutorial", tutorial)
+    
     def criar_tabuleiro(self):
         self.tabuleiro_frame = tk.Frame(self.root)
         self.tabuleiro_frame.pack()
@@ -89,6 +122,13 @@ class CampoMinado:
                 btn.bind("<Button-3>", lambda event, i=i, j=j: self.marcar_bandeira(i, j))
                 self.botoes[i][j] = btn
 
+        self.iniciar_timer()
+        self.atualizar_placar_bombas()
+
+    def iniciar_timer(self):
+        self.tempo_inicial = time.time()
+        self.atualizar_placar_tempo()
+    
     def plantar_bombas(self):
         bombas_plantadas = 0
         while bombas_plantadas < self.bombas:
@@ -109,24 +149,31 @@ class CampoMinado:
             return
 
         if self.tempo_inicial is None:
-            self.tempo_inicial = time.time()
+            self.iniciar_timer()
 
         if self.tabuleiro[row][col] == -1:
             self.mostrar_bombas()
             self.mostrar_mensagem("Você perdeu!")
-            self.jogo_encerrado = True  # Define o jogo como encerrado
+            self.jogo_encerrado = True
             self.finalizar_partida()
         else:
             self.revelar_celula(row, col)
-            self.verificar_vitoria()
+            self.verificar_vitoria("Parabéns, você venceu!!!")
 
     def mostrar_mensagem(self, mensagem):
         resposta = tkinter.messagebox.askquestion("Resultado", mensagem + f"\nDeseja jogar novamente?")
         if resposta == "yes":
             self.iniciar_jogo(*self.nivel)
         else:
+            partida = {
+                "nivel": self.nivel,
+                "tempo": self.tempo_passado,
+                "resultado": "Vitória" if not self.jogo_encerrado else "Derrota"
+            }
+            self.partidas_jogadas.append(partida)
+
             self.root.quit()
-            raise SystemExit  # Lançar uma exceção SystemExit quando o jogo deve ser encerrado
+            raise SystemExit
 
     def mostrar_bombas(self):
         for i in range(self.linhas):
@@ -144,33 +191,6 @@ class CampoMinado:
                         bomb_count += 1
 
         return bomb_count
-
-    # def revelar_celula(self, row, col):
-    #     if self.tabuleiro[row][col] != 0:
-    #         self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
-    #     else:
-    #         self.botoes[row][col].config(state="disabled")
-    #         for dr in [-1, 0, 1]:
-    #             for dc in [-1, 0, 1]:
-    #                 if 0 <= row + dr < self.linhas and 0 <= col + dc < self.colunas and self.tabuleiro[row + dr][col + dc] != -1 and self.tabuleiro[row + dr][col + dc] != -2:
-    #                     self.revelar_celula(row + dr, col + dc)
-    #     self.tabuleiro[row][col] = -2
-    
-    # def revelar_celula(self, row, col):
-    #     if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
-    #         return
-
-    #     if self.tempo_inicial is None:
-    #         self.tempo_inicial = time.time()
-
-    #     if self.tabuleiro[row][col] == -1:
-    #         self.mostrar_bombas()
-    #         self.mostrar_mensagem("Você perdeu!")
-    #         self.jogo_encerrado = True
-    #         self.finalizar_partida()
-    #     else:
-    #         self.revelar_vizinhanca(row, col)
-    #         self.verificar_vitoria()
 
     def revelar_celula(self, row, col):
         if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
@@ -192,26 +212,7 @@ class CampoMinado:
                 self.revelar_vizinhanca(row, col)
             self.tabuleiro[row][col] = -2
             self.verificar_vitoria()
-    
-    # def revelar_vizinhanca(self, row, col):
-    #     if row < 0 or row >= self.linhas or col < 0 or col >= self.colunas or self.tabuleiro[row][col] == -2:
-    #         return
 
-    #     if self.tabuleiro[row][col] == 0:
-    #         self.tabuleiro[row][col] = -2
-    #         self.botoes[row][col].config(text="", state="disabled")
-            
-    #         for dr in [-1, 0, 1]:
-    #             for dc in [-1, 0, 1]:
-    #                 if dr == 0 and dc == 0:
-    #                     continue
-    #                 new_row, new_col = row + dr, col + dc
-    #                 if 0 <= new_row < self.linhas and 0 <= new_col < self.colunas:
-    #                     self.revelar_vizinhanca(new_row, new_col)
-    #     else:
-    #         self.tabuleiro[row][col] = -2
-    #         self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
-    
     def revelar_vizinhanca(self, row, col):
         if row < 0 or row >= self.linhas or col < 0 or col >= self.colunas or self.tabuleiro[row][col] == -2:
             return
@@ -234,40 +235,44 @@ class CampoMinado:
             self.tabuleiro[row][col] = -2
             self.botoes[row][col].config(text=str(self.tabuleiro[row][col]), state="disabled")
 
-
-    
     def marcar_bandeira(self, row, col):
-        if self.jogo_encerrado:
+        if self.jogo_encerrado or self.tabuleiro[row][col] == -2:
             return
 
-        if self.tabuleiro[row][col] != -2:
-            if self.tabuleiro[row][col] == -1:
-                self.botoes[row][col].config(text="😥", state="disabled")
-            else:
-                self.botoes[row][col].config(text="😥")
-            self.tabuleiro[row][col] = -2
+        if self.tempo_inicial is None:
+            self.tempo_inicial = time.time()
+
+        if self.botoes[row][col]["text"] == "🚩":
+            self.botoes[row][col].config(text="?")
+            self.bandeiras_marcadas -= 1  # Decrementar o contador de bandeiras marcadas
+        elif self.botoes[row][col]["text"] == "?":
+            self.botoes[row][col].config(text="")
         else:
-            self.botoes[row][col].config(text="", state="normal")
-            self.tabuleiro[row][col] = self.contar_vizinhos(row, col)
+            # Verificar se o limite de bandeiras foi atingido
+            if self.bandeiras_marcadas < self.limite_bandeiras:
+                self.botoes[row][col].config(text="🚩")
+                self.bandeiras_marcadas += 1  # Incrementar o contador de bandeiras marcadas
 
-    def contar_vizinhos(self, row, col):
-        vizinhos = 0
-        for dr in [-1, 0, 1]:
-            for dc in [-1, 0, 1]:
-                if 0 <= row + dr < self.linhas and 0 <= col + dc < self.colunas and self.tabuleiro[row + dr][col + dc] == -2:
-                    vizinhos += 1
-        return vizinhos
-
-    def finalizar_partida(self):
-         self.tempo_passado = int(time.time() - self.tempo_inicial)
-
-    def verificar_vitoria(self):
+    
+    def verificar_vitoria(self, mensagem="Parabéns, você ganhou!!!"):
         celulas_livres = sum(row.count(0) for row in self.tabuleiro)
         celulas_abertas = sum(row.count(-2) for row in self.tabuleiro)
         if celulas_abertas == celulas_livres:
             self.mostrar_bombas()
             self.jogo_encerrado = True
-            self.finalizar_partida()
+            self.finalizar_partida(mensagem)
+
+    
+    def finalizar_partida(self):
+        self.tempo_passado = int(time.time() - self.tempo_inicial)
+        self.mostrar_mensagem()
+
+    def mostrar_historico(self):
+        if self.partidas_jogadas:
+            historico = "\n".join([f"Nível: {partida['nivel']}, Tempo: {partida['tempo']} segundos, Resultado: {partida['resultado']}" for partida in self.partidas_jogadas])
+            tkinter.messagebox.showinfo("Histórico de Partidas", historico)
+        else:
+            tkinter.messagebox.showinfo("Histórico de Partidas", "Nenhuma partida jogada ainda.")
 
     def reiniciar_jogo(self):
         self.jogo_encerrado = False
@@ -276,4 +281,8 @@ class CampoMinado:
 if __name__ == "__main__":
     root = tk.Tk()
     game = CampoMinado(root)
+
+    historico_button = tk.Button(root, text="Histórico de Partidas", command=game.mostrar_historico)
+    historico_button.pack()
+
     root.mainloop()
