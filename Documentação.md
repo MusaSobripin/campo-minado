@@ -129,6 +129,16 @@
 *test_celula_fora_dos_limites_do_tabuleiro_facil*
 *test_celula_fora_dos_limites_do_tabuleiro_intermediario*
 *test_celula_fora_dos_limites_do_tabuleiro_dificil*
+*test_celula_na_esquina_com_1_vizinhos_bomba_facil*
+*test_celula_na_esquina_com_1_vizinhos_bomba_intermediario*
+*test_celula_na_esquina_com_1_vizinhos_bomba_dificil*
+*test_celula_na_esquina_com_2_vizinhos_bomba_facil*
+*test_celula_na_esquina_com_2_vizinhos_bomba_intermediario*
+*test_celula_na_esquina_com_2_vizinhos_bomba_dificil*
+*test_celula_na_esquina_com_3_vizinhos_bomba_facil*
+*test_celula_na_esquina_com_3_vizinhos_bomba_intermediario*
+*test_celula_na_esquina_com_3_vizinhos_bomba_dificil*
+
 
 ### Testes de Menu
 
