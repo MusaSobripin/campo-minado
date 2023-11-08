@@ -5,7 +5,6 @@
 - [Apresentando o jogo](#apresentando-o-jogo)
 - [Como rodar o projeto?](#como-rodar-o-projeto)
 - [Como consigo executar  os testes?](#como-executar-os-testes)
-- [Requisitos e casos de testes](./requisitos.md)
 - [Documentação](./Documentação.md)
 
 ## Apresentando o jogo
