@@ -123,30 +123,3 @@ def test_ordem_dos_botoes(campo_minado):
     assert textos_dos_botoes == ordem_esperada # Verifique se a ordem dos botões corresponde à ordem esperada
 
     campo_minado.root.destroy()
-    
-# def test_manipulacao_de_eventos_facil(campo_minado):
-#     campo_minado.iniciar_jogo(8, 8, 10)
-
-#     # Obtenha todos os botões no frame do menu
-#     botoes = campo_minado.root.winfo_children()
-    
-#     # Encontre o botão com o texto "Fácil"
-#     botao_facil = None
-#     for botao in botoes:
-#         if "Fácil" in botao.cget("text"):
-#             botao_facil = botao
-#             break
-    
-#     assert botao_facil is not None, "Botão 'Fácil' não encontrado."
-
-#     def pressiona_botao():
-#         botao_facil.invoke()
-    
-#     campo_minado.root.after(2000, pressiona_botao)
-
-#     # Espere até que o jogo seja iniciado
-#     campo_minado.root.wait_variable(campo_minado.root.winfo_children()[0].iniciar)
-
-#     # Verifique se o jogo foi iniciado com os parâmetros corretos
-#     resultado = campo_minado.iniciar_jogo(8, 8, 10)
-#     assert resultado == "Fácil", f"O nível selecionado deveria ser 'Fácil', mas foi '{resultado}'."
