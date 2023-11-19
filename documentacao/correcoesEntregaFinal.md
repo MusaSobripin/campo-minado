@@ -8,6 +8,7 @@ Descrição: *A tabela abaixo exibe quais requisitos faltavam ser feitos e quais
 | Apresentação                     | Apresentação                       | Sim 🟢         |
 | Classificação das técnicas       | Classificação das técnicas         | Sim 🟢         |
 | Cobertura                        | Cobertura                          | Sim 🟢         |
+| Correção de comandos no Readme   | Correção de comandos no Readme     | Sim 🟢         |
 | Gradle                           | Gradle                             | Não ⭕         |
 | Organização das pastas           | Organização das pastas             | Sim 🟢         |
 | Organização dos arquivos         | Organização dos arquivos           | Sim 🟢         |
