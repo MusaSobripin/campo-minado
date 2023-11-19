@@ -56,4 +56,5 @@ test_encerramento_do_jogo_quando_nao_intermediario
 ...
 ```
 
+- [Documentação](/documentacao/)
 - [Voltar ao início](/README.md)

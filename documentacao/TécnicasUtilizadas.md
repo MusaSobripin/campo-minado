@@ -36,4 +36,5 @@ test_tabuleiro_vazio_dificil
 ...
 ```
 
+- [Documentação](/documentacao/)
 - [Voltar ao início](/README.md)

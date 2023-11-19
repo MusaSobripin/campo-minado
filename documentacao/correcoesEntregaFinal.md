@@ -15,4 +15,5 @@ Descrição: *A tabela abaixo exibe quais requisitos faltavam ser feitos e quais
 | Separação de informações na Doc. | Separação de informações na Doc.   | Sim 🟢         |
 | Técnicas utilizadas              | Técnicas utilizadas                | Sim 🟢         |
 
+- [Documentação](/documentacao/)
 - [Voltar ao início](/README.md)
