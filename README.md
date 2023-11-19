@@ -5,7 +5,13 @@
 - [Apresentando o jogo](#apresentando-o-jogo)
 - [Como rodar o projeto?](#como-rodar-o-projeto)
 - [Como consigo executar  os testes?](#como-executar-os-testes)
-- [Documentação](./Documentação.md)
+- [Documentação](./documentacao)
+
++ - [Classificação dos testes usados](./documentacao/ClassificaçãoTestes.md)
++ - [Correções para entrega final](./documentacao/ClassificaçãoTestes.md)
++ - [Requisitos](./documentacao/ClassificaçãoTestes.md)
++ - [Técnicas utilizadas no projeto](./documentacao/ClassificaçãoTestes.md)
++ - [Tipos de testes usados no projeto](./documentacao/ClassificaçãoTestes.md)
 
 ## Apresentando o jogo
 
@@ -72,5 +78,8 @@ pytest [nome_test.py]
 ### Testes no jogo
 ![Tela do jogo com os testes.](./img/testes.png)
 
-### Considerações finais
+### Motivacional
 *"A vida é um pé de manga 🌳🥭"*
+
+
+- [Voltar ao início](./Readme.md)
