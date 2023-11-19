@@ -39,6 +39,10 @@ cd campo-minado
 ### Instale todas as dependências
 
 ```sh
+pip install pytest
+```
+ou
+```sh
 pip3 install pytest
 ```
 
@@ -46,6 +50,11 @@ pip3 install pytest
 
 ```sh
 python cminado.py
+```
+ou 
+
+```sh
+python3 cminado.py
 ```
 ou
 ```sh
