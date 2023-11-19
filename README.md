@@ -73,4 +73,4 @@ pytest [nome_test.py]
 ![Tela do jogo com os testes.](./img/testes.png)
 
 ### Considerações finais
-*"A vida é uma sucessiva sucessão de sucessões que se sucedem sucessivamente até sucederem o sucesso, e ela cobra."*
+*"A vida é um pé de manga 🌳🥭"*
