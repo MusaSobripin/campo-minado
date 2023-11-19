@@ -6,7 +6,7 @@ Descrição: *A tabela abaixo exibe quais requisitos faltavam ser feitos e quais
 |----------------------------------|------------------------------------|-----------------|
 | Agrupar                          | Agrupamento                        | Sim 🟢         |
 | Apresentação                     | Apresentação                       | Sim 🟢         |
-| Classificação das técnicas       | Classificação das técnicas         | Sim 🟢         |
+| Classificação/Descrição das técnicas       | Classificação/Descrição das técnicas         | Sim 🟢         |
 | Cobertura                        | Cobertura                          | Sim 🟢         |
 | Correção de comandos no Readme   | Correção de comandos no Readme     | Sim 🟢         |
 | Gradle                           | Gradle                             | Não ⭕         |
