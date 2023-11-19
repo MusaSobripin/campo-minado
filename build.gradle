@@ -1,0 +1,11 @@
+plugins {
+    id 'org.gradle.python' version '3.0.0'
+}
+
+python {
+    version '3.8.5'
+}
+
+tasks.withType(JavaExec) {
+    classpath += sourceSets.main.runtimeClasspath
+}
