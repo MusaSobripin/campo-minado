@@ -56,4 +56,4 @@ test_encerramento_do_jogo_quando_nao_intermediario
 ...
 ```
 
-- [Voltar ao início](./Readme.md)
+- [Voltar ao início](#apresentando-o-jogo)

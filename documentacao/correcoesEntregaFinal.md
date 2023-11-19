@@ -14,3 +14,5 @@ Descrição: *A tabela abaixo exibe quais requisitos faltavam ser feitos e quais
 | Organização dos arquivos         | Organização dos arquivos           | Sim 🟢         |
 | Separação de informações na Doc. | Separação de informações na Doc.   | Sim 🟢         |
 | Técnicas utilizadas              | Técnicas utilizadas                | Sim 🟢         |
+
+- [Voltar ao início](#apresentando-o-jogo)
