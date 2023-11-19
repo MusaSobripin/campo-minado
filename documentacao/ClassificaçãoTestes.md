@@ -55,3 +55,5 @@ test_verificar_vitoria_vitoria_dificil
 test_encerramento_do_jogo_quando_nao_intermediario
 ...
 ```
+
+- [Voltar ao início](./Readme.md)
