@@ -31,10 +31,27 @@ test_criacao_do_menu.py
 ...
 ```
 
-## Testes de Regrassão
+## Testes de Regressão
 ```sh
 Exemplos: 
 test_reiniciar_jogo_valores_padrao_facil
 test_encerramento_do_jogo_quando_nao
 ```
 
+### Teste de Stress
+
+```sh
+Exemplos: 
+test_desempenho_tabuleiro_grande_facil
+test_desempenho_time_tabuleiro_pequeno
+...
+```
+
+### Teste de Aceitação
+
+```sh
+Exemplos: 
+test_verificar_vitoria_vitoria_dificil
+test_encerramento_do_jogo_quando_nao_intermediario
+...
+```
