@@ -39,13 +39,13 @@ cd campo-minado
 ### Instale todas as dependências
 
 ```sh
-pip3 install -r dependencias.txt
+pip3 install pytest
 ```
 
 ### Execute o jogo já compilado
 
 ```sh
-py cminado.py
+python cminado.py
 ```
 ou
 ```sh
@@ -57,8 +57,11 @@ ou
 ### Dentro do diretório do projeto (caminho/campo-minado) execute
 
 ```sh
-py -m pytest [nome_test.py]
+pytest [nome_test.py]
 ```
 
 ### Testes no jogo
 ![Tela do jogo com os testes.](./img/testes.png)
+
+### Considerações finais
+*"A vida é uma sucessiva sucessão de sucessões que se sucedem sucessivamente até sucederem o sucesso, e ela cobra."*
