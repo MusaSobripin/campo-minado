@@ -36,4 +36,4 @@ test_tabuleiro_vazio_dificil
 ...
 ```
 
-- [Voltar ao início](#apresentando-o-jogo)
+- [Voltar ao início](/README.md)

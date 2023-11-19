@@ -146,4 +146,4 @@
 42. O jogo deve ser testado e para evitar que haja bugs e que garantir seu pleno funcinamento ✅
     + Realizar testes abrangentes em diferentes cenários para identificar e corrigir bugs.
 
-- [Voltar ao início](#apresentando-o-jogo)
+- [Voltar ao início](/README.md)

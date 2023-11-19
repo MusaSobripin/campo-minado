@@ -15,4 +15,4 @@ Descrição: *A tabela abaixo exibe quais requisitos faltavam ser feitos e quais
 | Separação de informações na Doc. | Separação de informações na Doc.   | Sim 🟢         |
 | Técnicas utilizadas              | Técnicas utilizadas                | Sim 🟢         |
 
-- [Voltar ao início](#apresentando-o-jogo)
+- [Voltar ao início](/README.md)

@@ -188,4 +188,4 @@
 + *test_verificar_vitoria_derrota_intermediario*
 + *test_verificar_vitoria_derrota_dificil*
 
--- [Voltar ao início](#apresentando-o-jogo)
+-- [Voltar ao início](/README.md)

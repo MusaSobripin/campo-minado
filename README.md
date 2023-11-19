@@ -82,4 +82,4 @@ pytest [nome_test.py]
 *"A vida é um pé de manga 🌳🥭"*
 
 
-- [Voltar ao início](#apresentando-o-jogo)
+- [Voltar ao início](#campo-minado)
