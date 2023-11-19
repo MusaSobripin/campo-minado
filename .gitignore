@@ -1,0 +1,5 @@
+/dist
+/campo_minado.spec
+/__pycache__
+/tests/__pycache__
+/.pytest_cache
