@@ -72,7 +72,11 @@ ou
 ### Dentro do diretório do projeto (caminho/campo-minado) execute
 
 ```sh
-pytest [nome_test.py]
+python -m pytest ./tests
+```
+ou 
+```sh
+python3 -m pytest ./tests
 ```
 
 ### Testes no jogo
